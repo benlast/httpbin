@@ -1,12 +1,10 @@
-FROM ubuntu:trusty
+FROM mobify/python:3.5
 
 ENV GUNICORN_WORKERS=16
 
 ADD . /httpbin
 
-RUN apt-get update -y && \
-    apt-get -y install python-pip && \
-    pip install gunicorn && \
+RUN pip install gunicorn && \
     pip install /httpbin
 
 EXPOSE 8080
